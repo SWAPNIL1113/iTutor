@@ -1,0 +1,64 @@
+﻿@model iTutor.Models.Assignment
+
+@{
+    ViewBag.Title = "Topic";
+    Layout = "~/Views/TutorLayout.cshtml";
+}
+<br/>
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Assignment & Test Paper</h3>
+                        </div>
+
+                        @using (Html.BeginForm("Topic", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <br />
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.topic, htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                    @Html.DropDownListFor(model => model.topic, new SelectList(@ViewBag.syllabus, "id", "topic"), new { @class = "form-control select2bs4" })
+                                    @*@Html.ValidationMessageFor(model => model.std, "", new { @class = "text-danger" })*@
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.assignment, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.EditorFor(model => model.assignment, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.assignment, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.testpaper, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.EditorFor(model => model.testpaper, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.testpaper, "", new { @class = "text-danger" })
+
+                                </div>
+                                <br />
+                                <div class="form-group form-button">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                </div>
+                                <br />
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>

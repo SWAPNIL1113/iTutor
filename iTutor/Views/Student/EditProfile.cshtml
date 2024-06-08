@@ -1,0 +1,160 @@
+﻿@model iTutor.Models.Studendt_Register
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/StudentLayout.cshtml";
+}
+
+<br />
+<br />
+<style>
+
+
+    form {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin: 50px auto;
+        max-width: 500px;
+        padding: 20px;
+    }
+
+    textcolor {
+        color: black;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], textarea {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    select {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 120%;
+    }
+
+    input[type="radio"] {
+        font-size: 16px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 10px;
+        width: 7%;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .register-link {
+        display: block;
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+    }
+</style>
+
+<section class="container">
+    <center>
+        <div class="signup-form">
+            <h2 class="form-title">Edit Profile</h2>
+        </div>
+    </center>
+
+    @using (Html.BeginForm("UpdateProfileData", "Student", FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.firstname, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form" } })
+                    @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form" } })
+                    @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form" } })
+                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-info" />
+                </div>
+                <br/>
+                
+                <div>
+                    @Html.ActionLink("Back to Profile", "Profile", new { @class = "btn btn-info" })
+                </div>
+
+            </div>
+        
+    }
+
+    
+</section>

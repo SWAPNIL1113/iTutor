@@ -1,0 +1,55 @@
+﻿@model IEnumerable<iTutor.Models.tutor_register>
+
+@{
+    ViewBag.Title = "Tutors";
+    Layout = "~/Views/StudentLayout.cshtml";
+}
+<br/>
+<br/>
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h6 class="section-title bg-white text-center text-primary px-3">Tutors</h6>
+    <h1 class="mb-5">All Tutors</h1>
+</div>
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+
+
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-6">
+                                Name:-
+                                @Html.DisplayFor(modelItem => item.lastname)
+                                @Html.DisplayFor(modelItem => item.firstname)
+                            </h5>
+                            <h6 class="mb-6">
+                                Address:-
+                                @Html.DisplayFor(modelItem => item.address)<br /><br />
+
+                                City:-@Html.DisplayFor(modelItem => item.city) , @Html.DisplayFor(modelItem => item.state)
+                            </h6>
+
+                            <h6 class="mb-6">
+                                Qualification:-
+                                @Html.DisplayFor(modelItem => item.qualification)<br /><br />
+                                Experience:-
+                                @Html.DisplayFor(modelItem => item.experience)<br /><br />
+                                Email:-
+                                @Html.DisplayFor(modelItem => item.email)<br /><br />
+                                Phone:-
+                                @Html.DisplayFor(modelItem => item.phone)
+
+                            </h6>
+
+                        </div>
+                    </div>
+              
+                </div>
+            }
+            </div>
+    </div>
+</div>

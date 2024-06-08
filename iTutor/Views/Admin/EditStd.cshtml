@@ -1,0 +1,55 @@
+﻿@model iTutor.Models.Class
+
+@{
+    ViewBag.Title = "EditStd";
+    Layout = "~/Views/Admin.cshtml";
+}
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Edit Standard Entry</h3>
+                        </div>
+                        @using (Html.BeginForm("UpdateStdData", "Admin", FormMethod.Post, new { @class = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+                            <div class="card-body">
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.std, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.std, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.std, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Update" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "viewclassentry")
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+

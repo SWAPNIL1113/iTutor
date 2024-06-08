@@ -1,0 +1,52 @@
+﻿@model iTutor.Models.Class
+
+@{
+    ViewBag.Title = "Class_Entry";
+    Layout = "~/Views/Admin.cshtml";
+
+}
+
+
+    
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Class Entry</h3>
+                        </div>
+
+                        @using (Html.BeginForm("Class_Entry", "Admin", FormMethod.Post, new { @class = "form" }))
+                        {
+                            <div class="card-body">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.std, htmlAttributes: new { @class = "" })
+
+                                    @Html.EditorFor(model => model.std, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.std, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <br />
+                                <div class="form-group form-button">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                </div>
+                                <br />
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+                </div>
+                </div>
+</section>
+
+</div>

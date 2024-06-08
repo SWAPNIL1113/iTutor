@@ -1,0 +1,62 @@
+﻿@model iTutor.Models.Studendt_Register
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/StudentLayout.cshtml";
+}
+
+<br />
+<br />
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+    <h4 class="section-title bg-white text-center text-primary px-3">Profile</h4>
+
+</div>
+
+
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-top h-100">
+            <div class="col col-md-12 col-lg-9 col-xl-7">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-4" style="background-color: ; ">
+                        <div class="d-flex text-black">
+                            <div class="flex-shrink-0">
+                                <img src="@Url.Content(Model.profile)"
+                                     alt="Generic placeholder image" class="img-fluid"
+                                     style="width: 350px; height:300px; border-radius: 10px;">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="mb-1">
+                                    @Url.Content(Model.firstname)
+                                    @Url.Content(Model.lastname)
+                                </h5>
+                                <h5>
+                                    <p class="mb-2 pb-1" style="color: #9ffcfc;">
+                                        @Url.Content(Model.email)
+                                    </p>
+                                </h5>
+                                <h6>
+                                    @Url.Content(Model.phone)
+                                </h6>
+
+                                <h6>
+                                    @Url.Content(Model.address)
+                                </h6>
+
+                                <h6>
+                                    @Url.Content(Model.state)
+                                </h6>
+
+                                <div class="d-flex pt-1">
+                                    @Html.ActionLink("Edit", "EditProfile", new { id = Model.id }, new { @class = "btn btn-outline-primary me-1 flex-grow-1" })
+                                    @Html.ActionLink("Logout", "Logout", "Student", new { @class = "btn btn-primary flex-grow-1" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

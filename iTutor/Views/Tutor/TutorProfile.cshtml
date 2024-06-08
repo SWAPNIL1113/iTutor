@@ -1,0 +1,186 @@
+﻿@model IEnumerable<iTutor.Models.tutor_register>
+
+@{
+    ViewBag.Title = "TutorProfile";
+    Layout = "~/Views/TutorLayout.cshtml";
+}
+
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #f6d365;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right bottom, rgba(139, 220, 240), rgba(139, 220, 240));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right bottom, rgba(139, 220, 240), rgba(139, 220, 240))
+    }
+</style>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qualification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.experience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpassword)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qualification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.experience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpassword)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+
+<section class="vh-100" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100">
+        @foreach (var item in Model)
+        {
+            <div class="row d-flex justify-content-top align-items-top h-100">
+                <div class="col col-lg-6 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4 gradient-custom text-center text-white"
+                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                     alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
+                                <h5>
+                                    @Html.DisplayFor(modelItem => item.lastname)
+                                    @Html.DisplayFor(modelItem => item.firstname)
+                                </h5>
+                                <h6>
+                                    @Html.DisplayFor(modelItem => item.qualification)
+                                </h6>
+                                <h6>
+                                    Expreience:-
+                                    @Html.DisplayFor(modelItem => item.experience)
+                                </h6>
+                                <i class="far fa-edit mb-5"></i>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h6>Information</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Email</h6>
+                                            <p class="text-muted">
+                                                @Html.DisplayFor(modelItem => item.email)
+                                            </p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Phone</h6>
+                                            <p class="text-muted">
+                                                @Html.DisplayFor(modelItem => item.phone)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h6>Address</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            @Html.DisplayFor(modelItem => item.address)
+                                            <h6></h6>
+                                            <p class="text-muted">
+                                                City:-
+                                                @Html.DisplayFor(modelItem => item.city)
+                                            </p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>
+                                                State:-
+                                                @Html.DisplayFor(modelItem => item.state)
+                                            </h6>
+                                     
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</section>

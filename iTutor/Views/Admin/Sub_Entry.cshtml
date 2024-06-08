@@ -1,0 +1,61 @@
+﻿@model iTutor.Models.SubList
+
+@{
+    ViewBag.Title = "Sub_Entry";
+    Layout = "~/Views/Admin.cshtml";
+}
+
+<div class="wrapper">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Subject Entry</h3>
+                        </div>
+
+
+                        @using (Html.BeginForm("Sub_Entry", "Admin", FormMethod.Post, new { @class = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <br />
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.std, htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                    @Html.DropDownListFor(model => model.std, new SelectList(@ViewBag.city, "id", "std"), new { @class = "form-control select2bs4" })
+                                    @*@Html.ValidationMessageFor(model => model.std, "", new { @class = "text-danger" })*@
+
+
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+
+                                    @Html.LabelFor(model => model.sub, htmlAttributes: new { @class = "control-label col-md-6" })
+
+
+                                    @Html.EditorFor(model => model.sub, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.sub, "", new { @class = "text-danger" })*@
+                                </div>
+                                <br />
+                                <div class="form-group form-button">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                </div>
+                                <br />
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+

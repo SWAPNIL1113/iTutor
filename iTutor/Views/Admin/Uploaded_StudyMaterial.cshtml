@@ -1,0 +1,81 @@
+﻿@model IEnumerable<iTutor.Models.Syllabus>
+
+@{
+    ViewBag.Title = "Uploaded_StudyMaterial";
+    Layout = "~/Views/Admin.cshtml";
+}
+
+<div class="card">
+    <center>
+        <div class="card-header">
+            <h1 class="card-title">Study Material</h1>
+        </div>
+    </center>
+
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.std)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sub)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.topic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.part1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.part2)
+                </th>
+               
+                <th>Delete</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.std)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sub)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.topic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        <img src="~/UploadFile/@item.image" alt="@item.image" style="height:100px;width:100px;border-width:0px;" />
+
+                    </td>
+                    <td>
+                        <img src="~/UploadFile/@item.part1" alt="@item.part1" style="height:100px;width:100px;border-width:0px;" />
+
+                    </td>
+                    <td>
+                        <img src="~/UploadFile/@item.part2" alt="@item.part2" style="height:100px;width:100px;border-width:0px;" />
+
+                    </td>
+                    
+                    <td>
+
+                        @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+                        @Html.ActionLink("Delete", "deletesyllabus", new { id = item.id }, new {@class="btn btn-danger"})
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>
+</div>

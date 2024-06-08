@@ -1,0 +1,91 @@
+﻿@model IEnumerable<iTutor.Models.Studendt_Register>
+
+
+@{
+    ViewBag.Title = "Student_Entry";
+    Layout = "~/Views/Admin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="card">
+        <center>
+            <div class="card-header">
+                <h3 class="card-title">Student Register Entry</h3>
+            </div>
+        </center>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.firstname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.lastname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.state)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.password)
+                    </th>
+                    <th>
+                        Delete Entry
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.firstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lastname)
+                        </td>
+                        <td>
+                            <textarea cols="30" rows="3" readonly>  @Html.DisplayFor(modelItem => item.address)</textarea>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.state)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.password)
+                        </td>
+
+                        <td class="btn btn-danger">
+
+                            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                           
+                            @Html.ActionLink("Delete", "deletedata", new { id = item.id }, new {@class="btn btn-danger"})
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        </div>
+    </div>

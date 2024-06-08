@@ -1,0 +1,126 @@
+﻿@model iTutor.Models.Syllabus
+@{
+    ViewBag.Title = "Addsyllabus";
+    Layout = "~/Views/TutorLayout.cshtml";
+}
+
+    <br />
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Add Syllabus</h3>
+                        </div>
+
+
+                        @using (Html.BeginForm("Addsyllabus", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" } ))
+                        {
+                            <div class="card-body">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.std, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.DropDownListFor(model => model.std, new SelectList(ViewBag.listclasses, "id", "std"),new { @class = "form-control select2bs4" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.sub, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.DropDownListFor(model => model.sub, new SelectList(string.Empty, "Value", "Value"),new { @class = "form-control select2bs4" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.topic, htmlAttributes: new { @class = "" })
+                                    @Html.EditorFor(model => model.topic, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.topic, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "" })
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-6" })
+                                    @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.part1, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    @Html.EditorFor(model => model.part1, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.part1, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.part2, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.part2, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                                    @Html.ValidationMessageFor(model => model.part2, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <br />
+                                <div class="form-group form-button">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                </div>
+                                <br />
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#std").change(function () {
+
+            debugger
+
+    $.ajax({
+
+        type: 'Post',
+        cache: false,
+        url: '@Url.Action("Stdlist", "Tutor")',
+       /* dataType: { id: $('#model.carmodel').val() },*/
+        data: { id: $('#std').val() },
+        success: function (data) {
+            debugger
+            $('#sub').empty();
+            console.log(data);
+            $.each(data, function (id, lstsubject) {
+                debugger
+                $('#sub').append('<option value="'
+                    + lstsubject.Text + '">' +
+                    lstsubject.Text + '</option>');
+            });
+        },
+        error: function (ex) {
+            alert('Failed to retrieve Sub Categories : ' + ex);
+            statesProgress.hide();
+        }
+    });
+    return false;
+})
+        });
+    </script>
+
+}
+

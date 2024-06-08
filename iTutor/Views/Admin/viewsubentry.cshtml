@@ -1,0 +1,48 @@
+﻿@model IEnumerable<iTutor.Models.SubList>
+
+@{
+    ViewBag.Title = "viewsubentry";
+    Layout = "~/Views/Admin.cshtml";
+}
+
+<div class="card">
+    <center>
+        <div class="card-header">
+            <h3 class="card-title">Subject Entry</h3>
+        </div>
+    </center>
+
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.sub)
+                </th>
+                <th>
+                    Standard
+                </th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sub)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.std)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditSub", new { id = item.id }, new {@class="btn btn-info" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteSub", new { id = item.id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>
+</div>
